@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.Optional;
 
 @RestController
+@RequestMapping(value = "/rest")
 public class RestApiController {
 
     @Autowired
@@ -53,7 +54,6 @@ public class RestApiController {
         Optional<ToDoItem> item = toDoRepository.findById(id);
         if(!item.isPresent()) throw  new ToDoItemNotFoundException("Item with "+ id +" not found");
         return new ResponseEntity<Object>(item, HttpStatus.OK);
-
     }
 
     @GetMapping(value = "/todo/all")
